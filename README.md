@@ -1,28 +1,48 @@
-# 🚀 FastAPI UUID Generator
+# 🚀 FastAPI UUID Generator  
 
-## 📚 Overview
-FastAPI UUID Generator is a high-performance API service built using **FastAPI**. It provides endpoints to generate **universally unique identifiers (UUIDs)**, including an asynchronous version with a **non-blocking delay of 3 seconds**.
+## 📚 Overview  
+FastAPI UUID Generator is a lightweight API service built using **FastAPI**. It provides endpoints to generate **universally unique identifiers (version 4 UUIDs)**, including an **asynchronous version with a 3-second delay**.  
 
-This service is useful for applications requiring UUIDs for **session management, unique identifiers, or distributed systems**.
+---
 
----  
-
-## 📌 Features
+## 📌 Features  
 
 ✅ **Generate UUIDs instantly**  
 ✅ **Async UUID generation with a controlled delay**  
-✅ **Interactive API documentation** with Swagger and ReDoc  
+✅ **Interactive API documentation with Swagger**  
 ✅ **Error logging with timestamps & status codes**  
-✅ **Docker support** for easy deployment  
+✅ **Docker support for easy deployment**  
 ✅ **Unit-tested for reliability**  
 ✅ **Error handling tests included**  
 
 ---  
 
-## 📥 Installation
+## 📂 Project Structure  
+
+```
+fastapi-uuid-server/
+│── app/
+│   ├── __init__.py      # Package initialization
+│   ├── main.py          # FastAPI application
+│── tests/
+│   ├── __init__.py      # Package initialization
+│   ├── test_main.py     # Unit tests (including error handling tests)
+│── logs/
+│   ├── __init__.py      # Package initialization
+│   ├── app.log          # Stores captured logs
+│── .gitignore           # Git ignore file
+│── Dockerfile           # Docker setup
+│── poetry.lock          # Poetry lock file
+│── pyproject.toml       # Dependencies and package management
+│── README.md            # Documentation
+```
+
+---
+
+## 🧅 Installation & Setup  
 
 ### **1️⃣ Install Poetry (If Not Installed)**  
-This project uses [Poetry](https://python-poetry.org/) for dependency management. Install it using:
+[Poetry](https://python-poetry.org/) is used for dependency management. Install it using:  
 
 ```bash
 pip install poetry
@@ -44,57 +64,18 @@ poetry install
 ### **4️⃣ Run the FastAPI Server**  
 
 ```bash
-poetry run uvicorn app.main:app --reload
+poetry run uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 The server will be available at **[http://127.0.0.1:8000](http://127.0.0.1:8000)**  
 
 ---  
 
-## 🧪 Running Tests  
+## 💜 API Documentation  
 
-To verify that everything is working correctly, run:  
-
-```bash
-poetry run pytest
-```
-
-This executes all unit tests in the **tests/** directory, including **error handling tests**.  
-
----  
-
-## 🐛 API Documentation  
-
-FastAPI provides **interactive API documentation**. After starting the server, access:  
+FastAPI provides **interactive API documentation**. Once the server is running, access:  
 
 - **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
-
----  
-
-## 🐋 Running with Docker  
-
-### **1️⃣ Build the Docker Image**  
-
-```bash
-docker build -t fastapi-uuid .
-```
-
-### **2️⃣ Run the Container**  
-
-```bash
-docker run -p 9090:9090 fastapi-uuid
-```
-
-This exposes the API at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
-
-### **3️⃣ Running Tests in Docker**  
-
-To execute tests inside the container:  
-
-```bash
-docker run fastapi-uuid poetry run pytest
-```
-
 ---  
 
 ## 🌟 API Endpoints  
@@ -128,59 +109,67 @@ docker run fastapi-uuid poetry run pytest
 
 ---  
 
-## 🐝 Error Handling & Logging  
+## 🛡️ Error Handling  
 
-The application logs all errors **with timestamps, status codes, and error details**.  
+### **Error Logging**  
 
-### Example Log Entry (Stored in `logs/app.log`):  
+- All errors are **automatically logged** with timestamps, status codes, and details.  
+- Logs are stored in:  
+  ```
+  logs/app.log
+  ```
 
-```
-2025-03-03 12:31:00 - ERROR - Status: 500 - Error generating UUID: Internal Server Error
-```
+### **Example Log Entry**  
+![image](https://github.com/user-attachments/assets/baea2c47-d7f6-408a-b9e8-6d5aba2d2c2b)
 
-### How It Works:  
-- **Errors are captured** and logged automatically.  
-- **Logs are stored** in `logs/app.log`.  
-- If the log file doesn't exist, **it is created dynamically**.  
 
-If an error occurs, the API responds with **500 Internal Server Error**.  
-
----  
-
-## 🛠 Project Structure  
-
-```
-fastapi-service/
-│── app/
-│   ├── __init__.py      # Package initialization
-│   ├── main.py         # FastAPI application
-│── tests/
-│   ├── __init__.py      # Package initialization
-│   ├── test_main.py    # Unit tests (including error handling tests)
-│── logs/
-│   ├── __init__.py      # Package initialization
-│   ├── app.log         # Stores captured logs.
-│── .gitignore          # Git ignore file
-│── Dockerfile          # Docker setup
-│── poetry.lock         # Poetry lock file
-│── pyproject.toml      # Dependencies and package management
-│── README.md           # Documentation
-```
+### **Error Responses**  
 
 ---  
 
-## 🐟 Error Handling Tests  
+## 🤦‍♂️ Running Tests  
 
-The test suite includes cases for handling **internal server errors** when UUID generation fails. 
+To verify that everything is working correctly, run:  
 
-### **Error Handling Test Cases:**
-- Simulating UUID generation failure for `/uuid` endpoint
-- Simulating UUID generation failure for `/async-uuid` endpoint
-- Validating API response with status **500 Internal Server Error**
+```bash
+poetry run pytest
+```
 
-These tests ensure the application is **resilient to unexpected failures**.  
+This executes all unit tests in the **tests/** directory, including:  
+
+✅ **UUID Generation Tests**  
+✅ **Async UUID Generation Tests**  
+✅ **Error Handling Tests**  
 
 ---  
+
+## 🐫 Running with Docker  
+Ensure that docker is installed and running.
+
+### **1️⃣ Build the Docker Image**  
+
+```bash
+cd fastapi_uuid_server
+```
+```bash
+docker build -t fastapi-uuid .
+```
+
+### **2️⃣ Run the Container**  
+
+```bash
+docker run -p 9090:9090 fastapi-uuid
+```
+
+This exposes the API at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
+
+### **3️⃣ Running Tests in Docker**  
+
+```bash
+docker run fastapi-uuid poetry run pytest
+```
+---
+
 
 🚀 **If you have any questions, feel free to reach out.**
 
