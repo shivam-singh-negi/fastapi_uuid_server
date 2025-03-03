@@ -113,7 +113,7 @@ FastAPI provides **interactive API documentation**. Once the server is running, 
 
 ### **Error Logging**  
 
-- All errors are **automatically logged** with timestamps, status codes, and details.  
+- All success/errors are **automatically logged** with timestamps, status codes, and details.  
 - Logs are stored in:  
   ```
   logs/app.log
