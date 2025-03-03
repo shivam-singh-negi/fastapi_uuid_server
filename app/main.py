@@ -3,7 +3,8 @@ import asyncio
 import logging
 from datetime import datetime, timezone
 from fastapi import FastAPI, HTTPException
-from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.responses import RedirectResponse
+
 
 # Configure logging with timestamps
 logging.basicConfig(
@@ -22,13 +23,12 @@ app = FastAPI(
     description="A FastAPI server that generates UUIDs",
     version="1.0",
     docs_url="/docs",
-    redoc_url="/redoc"
 )
 
 @app.get("/", include_in_schema=False)
 async def redirect_to_docs():
     """Redirect root endpoint to Swagger UI."""
-    return get_swagger_ui_html(openapi_url="/openapi.json", title="API Documentation")
+    return RedirectResponse(url="/docs")
 
 @app.get("/uuid", response_model=dict, status_code=200, summary="Generate a UUID")
 def generate_uuid():

@@ -49,7 +49,7 @@ poetry install
 poetry run uvicorn app.main:app --reload
 ```
 
-The server will be available at **[http://127.0.0.1:8000](http://127.0.0.1:8000)**  
+The server will be available at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
 
 ---  
 
