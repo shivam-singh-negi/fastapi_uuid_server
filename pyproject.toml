@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "fastapi-server"
+version = "0.1.0"
+description = "A FastAPI service for generating UUIDs"
+authors = ["Shivam Singh Negi <Shivamsingh.comp1999@gmail.com>"]
+packages = [{ include = "app" }]  # 👈 Add this line to tell Poetry where your code is.
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.110.0"
+uvicorn = "^0.29.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+httpx = "^0.28.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
