@@ -49,7 +49,7 @@ poetry install
 poetry run uvicorn app.main:app --reload
 ```
 
-The server will be available at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
+The server will be available at **[http://127.0.0.1:8000](http://127.0.0.1:8000)**  
 
 ---  
 
@@ -89,10 +89,10 @@ docker build -t fastapi-uuid .
 ### **2️⃣ Run the Container**  
 
 ```bash
-docker run -p 8000:8000 fastapi-uuid
+docker run -p 9090:9090 fastapi-uuid
 ```
 
-This exposes the API at **[http://127.0.0.1:8000](http://127.0.0.1:8000)**  
+This exposes the API at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
 
 ### **3️⃣ Running Tests in Docker**  
 
