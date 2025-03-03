@@ -1,10 +1,9 @@
 # 🚀 FastAPI UUID Generator
 
 ## 📚 Overview
+FastAPI UUID Generator is a high-performance API service built using **FastAPI**. It provides endpoints to generate **universally unique identifiers (UUIDs)**, including an asynchronous version with a **non-blocking delay of 3 seconds**.
 
-FastAPI UUID Generator is a lightweight, high-performance API service built using **FastAPI**. It provides endpoints to generate **universally unique identifiers (UUIDs)**, including an asynchronous version that introduces a **non-blocking delay of 3 seconds**.
-
-This service is useful for applications that require UUIDs for **session management, unique identifiers, or distributed systems**.
+This service is useful for applications requiring UUIDs for **session management, unique identifiers, or distributed systems**.
 
 ---  
 
@@ -20,11 +19,10 @@ This service is useful for applications that require UUIDs for **session managem
 
 ---  
 
-## 🫠 Installation & Running Locally
+## 📥 Installation
 
 ### **1️⃣ Install Poetry (If Not Installed)**  
-
-This project uses [Poetry](https://python-poetry.org/) for dependency management. If you haven't installed it, run:  
+This project uses [Poetry](https://python-poetry.org/) for dependency management. Install it using:
 
 ```bash
 pip install poetry
@@ -33,8 +31,8 @@ pip install poetry
 ### **2️⃣ Clone the Repository**  
 
 ```bash
-git clone <your-repo-url>
-cd fastapi-service
+git clone https://github.com/shivam-singh-negi/fastapi_uuid_server.git
+cd fastapi_uuid_server
 ```
 
 ### **3️⃣ Install Dependencies**  
@@ -49,7 +47,7 @@ poetry install
 poetry run uvicorn app.main:app --reload
 ```
 
-The server will be available at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
+The server will be available at **[http://127.0.0.1:8000](http://127.0.0.1:8000)**  
 
 ---  
 
@@ -61,24 +59,19 @@ To verify that everything is working correctly, run:
 poetry run pytest
 ```
 
-This will execute all unit tests defined in the **tests/** directory, including tests for **error handling**.  
+This executes all unit tests in the **tests/** directory, including **error handling tests**.  
 
 ---  
 
 ## 🐛 API Documentation  
 
-FastAPI provides **interactive API documentation**. Once the server is running, access:  
+FastAPI provides **interactive API documentation**. After starting the server, access:  
 
 - **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
-- **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)  
-
-Swagger UI will open **by default** when accessing `/`.  
 
 ---  
 
 ## 🐋 Running with Docker  
-
-If you prefer running the service in a **Docker container**, follow these steps:  
 
 ### **1️⃣ Build the Docker Image**  
 
@@ -89,10 +82,10 @@ docker build -t fastapi-uuid .
 ### **2️⃣ Run the Container**  
 
 ```bash
-docker run -p 8000:8000 fastapi-uuid
+docker run -p 9090:9090 fastapi-uuid
 ```
 
-This exposes the API at **[http://127.0.0.1:8000](http://127.0.0.1:8000)**  
+This exposes the API at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
 
 ### **3️⃣ Running Tests in Docker**  
 
@@ -107,7 +100,7 @@ docker run fastapi-uuid poetry run pytest
 ## 🌟 API Endpoints  
 
 | Method  | Endpoint      | Description                                   | Status Code |
-| ------- | ------------- | --------------------------------------------- | ----------- |
+|---------|-------------|---------------------------------------------|-------------|
 | **GET** | `/uuid`       | Returns a unique UUID.                        | 200         |
 | **GET** | `/async-uuid` | Returns a unique UUID after a 3-second delay. | 200         |
 
@@ -147,10 +140,10 @@ The application logs all errors **with timestamps, status codes, and error detai
 
 ### How It Works:  
 - **Errors are captured** and logged automatically.  
-- **Logs are stored** in a dedicated `logs/app.log` file.  
+- **Logs are stored** in `logs/app.log`.  
 - If the log file doesn't exist, **it is created dynamically**.  
 
-In case of failure, the API responds with **500 Internal Server Error**.  
+If an error occurs, the API responds with **500 Internal Server Error**.  
 
 ---  
 
@@ -159,13 +152,19 @@ In case of failure, the API responds with **500 Internal Server Error**.
 ```
 fastapi-service/
 │── app/
+│   ├── __init__.py      # Package initialization
 │   ├── main.py         # FastAPI application
 │── tests/
+│   ├── __init__.py      # Package initialization
 │   ├── test_main.py    # Unit tests (including error handling tests)
+│── logs/
+│   ├── __init__.py      # Package initialization
+│   ├── app.log         # Stores captured logs.
+│── .gitignore          # Git ignore file
 │── Dockerfile          # Docker setup
+│── poetry.lock         # Poetry lock file
 │── pyproject.toml      # Dependencies and package management
 │── README.md           # Documentation
-│── logs/               # Stores log files (if configured)
 ```
 
 ---  
@@ -183,11 +182,5 @@ These tests ensure the application is **resilient to unexpected failures**.
 
 ---  
 
-## 🐜 License  
-
-This project is licensed under the **MIT License**.  
-
----  
-
-🚀 **Enjoy coding! If you have any questions, feel free to reach out.**
+🚀 **If you have any questions, feel free to reach out.**
 
