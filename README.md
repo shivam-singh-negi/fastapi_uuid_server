@@ -152,13 +152,14 @@ Ensure that docker is installed and running.
 cd fastapi_uuid_server
 ```
 ```bash
-docker build -t fastapi-uuid .
+docker build --no-cache -t fastapi-uuid .
+
 ```
 
 ### **2️⃣ Run the Container**  
 
 ```bash
-docker run -p 9090:9090 fastapi-uuid
+docker run -d -p 9090:9090 --name fastapi-uuid fastapi-uuid
 ```
 
 This exposes the API at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**  
@@ -166,7 +167,8 @@ This exposes the API at **[http://127.0.0.1:9090](http://127.0.0.1:9090)**
 ### **3️⃣ Running Tests in Docker**  
 
 ```bash
-docker run fastapi-uuid poetry run pytest
+docker exec -it fastapi-uuid /bin/bash
+poetry run pytest
 ```
 ---
 
