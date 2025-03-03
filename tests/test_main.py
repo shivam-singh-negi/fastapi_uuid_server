@@ -7,7 +7,7 @@ client = TestClient(app)
 
 def test_generate_uuid_success():
     """Test successful UUID generation from /uuid endpoint."""
-    # Arrange & Act
+   
     response = client.get("/uuid")
     
     # Assert
@@ -26,7 +26,7 @@ def test_generate_uuid_success():
 
 def test_generate_async_uuid_success():
     """Test successful UUID generation with delay from /async-uuid endpoint."""
-    # Arrange & Act
+
     response = client.get("/async-uuid")
     
     # Assert
